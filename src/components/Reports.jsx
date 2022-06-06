@@ -1,5 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 
+// import DataGrid to display a table with different field on my first page
 const columns = [
   //   { field: "_id", headerName: "ID", width: 90 ,  },
   { field: "year", headerName: "Year", width: 90 },
@@ -94,14 +95,15 @@ const columns = [
 ];
 const Reports = ({ sales }) => {
   return (
+    // style with css Property
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={sales}
-        getRowId={(row) => row._id}
-        columns={columns}
-        pageSize={100}
-        rowsPerPageOptions={[1000]}
-        checkboxSelection
+        rows={sales} // set "sales" rows as Grid Row Property
+        getRowId={(row) => row._id} // return the row _id from mongoDatabase
+        columns={columns} // setting our columns as same type of Grid columns
+        pageSize={100} // setting the number of row in one page
+        rowsPerPageOptions={[1000]} // It's select the pageSize for the UI
+        checkboxSelection // allows to select rows
       />
     </div>
   );
