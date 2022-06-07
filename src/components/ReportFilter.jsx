@@ -6,7 +6,6 @@ const ReportFilter = ({ sales }) => {
   return (
     <Autocomplete
       options={sales} // this is an array of
-      // filterOptions={(productName) => productName} // ? determine the filtered option to be rendered on search
       getOptionLabel={(option) => option.productName} // use to determine the disabled state for a given option
       renderInput={(params) => <TextField {...params} label="Product Name" />}
     />
