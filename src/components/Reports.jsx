@@ -94,6 +94,7 @@ const columns = [
   },
 ];
 const Reports = ({ sales }) => {
+  //useEffect(() => {}, []).then((response) => response.json());
   return (
     // style with css Property
     <div style={{ height: 400, width: "100%" }}>
