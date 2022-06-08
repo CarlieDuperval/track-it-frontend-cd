@@ -1,26 +1,22 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales, productName, productCategory }) => {
-  //const [displayReport, setDisplayReport] = useState();
-  const month = [
-    { label: "jan" },
-    { label: "fev" },
-    { label: "mar" },
-    { label: "apr" },
-    { label: "may" },
-    { label: "jun" },
-    { label: "jul" },
-    { label: "aug" },
-    { label: "sep" },
-    { label: "oct" },
-    { label: "nov" },
-    { label: "dec" },
-  ];
-  const year = [
-    { label: "year", value: "2021" },
-    { label: "year", value: "2022" },
-  ];
+const ReportFilter = ({ sales }) => {
+  // const [displayReport, setDisplayReport] = useState();
+
+  // useEffect(() => {
+  //   let filteredReport = displayReport;
+  //   if (inputName) {
+  //     filteredReport = filteredReport.filter(
+  //       (displayReport) => displayReport.productName === inputName
+  //     );
+  //   }
+  //   if (inputCategory) {
+  //     filteredReport = filteredReport.filter(
+  //       (displayReport) => displayReport.productCategory === inputCategory
+  //     );
+  //   }
+  // }, [inputName, inputCategory]);
 
   return (
     <>
