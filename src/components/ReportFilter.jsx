@@ -1,27 +1,28 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
 
-const ReportFilter = ({ sales }) => {
-  //const [displayReport, setDisplayReport] = useState();
-  // const month = [
-  //   { label: "jan" },
-  //   { label: "fev" },
-  //   { label: "mar" },
-  //   { label: "apr" },
-  //   { label: "may" },
-  //   { label: "jun" },
-  //   { label: "jul" },
-  //   { label: "aug" },
-  //   { label: "sep" },
-  //   { label: "oct" },
-  //   { label: "nov" },
-  //   { label: "dec" },
-  // ];
-  // const year = [
-  //   { label: "year", value: "2021" },
-  //   { label: "year", value: "2022" },
-  // ];
-
+const ReportFilter = ({ sales, productCategory, productName }) => {
+  const [inputName, setInputName] = useState();
+  const [inputCategory, setInputCategory] = useState();
+  useEffect(() => {
+    let filteredReport = { productName, productCategory }; // set the report to product name or category
+    // if given inputName
+    if (inputName) {
+      // loop inside productName witch is inside sales collection , filter the inputName
+      filteredReport = filteredReport.filter(
+        (productName) => productName.sales === inputName // return inputName
+      );
+    }
+    setInputName(filteredReport);
+    if (inputCategory) {
+      filteredReport = filteredReport.filter(
+        (productCategory) => productCategory.sales === inputCategory
+      );
+    }
+    setInputCategory(filteredReport);
+    //when i added the dependencies on the [] ; nothing show on my report
+  }, [inputCategory, inputName, productCategory, sales, productName]); // ????? I leave the useEffect[] without dependencies : error --> missing dependencies
   return (
     <>
       <Grid container spacing={1}>
