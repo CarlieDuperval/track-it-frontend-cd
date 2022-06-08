@@ -1,22 +1,40 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales }) => {
-  //const [reportSearch, setReportSearch] = useState();
+const ReportFilter = ({ sales, productName, productCategory }) => {
+  //const [displayReport, setDisplayReport] = useState();
+  const month = [
+    { label: "jan" },
+    { label: "fev" },
+    { label: "mar" },
+    { label: "apr" },
+    { label: "may" },
+    { label: "jun" },
+    { label: "jul" },
+    { label: "aug" },
+    { label: "sep" },
+    { label: "oct" },
+    { label: "nov" },
+    { label: "dec" },
+  ];
+  const year = [
+    { label: "year", value: "2021" },
+    { label: "year", value: "2022" },
+  ];
+
   return (
     <>
       <Grid container spacing={1}>
         <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={sales} // this is an array of
-          getOptionLabel={(option) => option.productName} // use to determine the disabled state for a given option
+          getOptionLabel={(option) => option.productName} // use to determine a string value for a given option
           renderInput={(params) => (
             <TextField {...params} label="Product Name" />
           )}
         />
-        {/* <span> */}
+
         <Autocomplete
-          id="Category-Autocomplete"
           sx={{ width: 300, height: 70 }}
           options={sales} // this is an array of
           getOptionLabel={(productName) => productName.productCategory} // use to determine the disabled state for a given option
@@ -24,8 +42,22 @@ const ReportFilter = ({ sales }) => {
             <TextField {...params} label="Product Category" />
           )}
         />
-        {/* </span> */}
+
+        {/* <Autocomplete
+          sx={{ width: 300, height: 700 }}
+          options={productName}
+          getOptionLabel={(productName) => productName.value}
+          renderInput={(params) => <TextField {...params}  />}
+        /> */}
+
+        {/* <Autocomplete
+          sx={{ width: 300, height: 700 }}
+          options={ productCategory}
+          getOptionLabel={(qtySold) => qtySold.option}
+          renderInput={(params) => <TextField {...params}  />}
+        /> */}
       </Grid>
+      <></>
     </>
   );
 };
