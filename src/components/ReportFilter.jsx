@@ -1,7 +1,7 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales, productName, productCategory }) => {
+const ReportFilter = ({ sales, productName, qtySold, productCategory }) => {
   //const [displayReport, setDisplayReport] = useState();
   const month = [
     { label: "jan" },
@@ -43,19 +43,19 @@ const ReportFilter = ({ sales, productName, productCategory }) => {
           )}
         />
 
-        {/* <Autocomplete
+        <Autocomplete
           sx={{ width: 300, height: 700 }}
           options={productName}
           getOptionLabel={(productName) => productName.value}
-          renderInput={(params) => <TextField {...params}  />}
-        /> */}
+          renderInput={(params) => <TextField {...params} />}
+        />
 
-        {/* <Autocomplete
+        <Autocomplete
           sx={{ width: 300, height: 700 }}
-          options={ productCategory}
+          options={qtySold}
           getOptionLabel={(qtySold) => qtySold.option}
-          renderInput={(params) => <TextField {...params}  />}
-        /> */}
+          renderInput={(params) => <TextField {...params} />}
+        />
       </Grid>
       <></>
     </>
