@@ -1,26 +1,26 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales, productName, qtySold, productCategory }) => {
+const ReportFilter = ({ sales }) => {
   //const [displayReport, setDisplayReport] = useState();
-  const month = [
-    { label: "jan" },
-    { label: "fev" },
-    { label: "mar" },
-    { label: "apr" },
-    { label: "may" },
-    { label: "jun" },
-    { label: "jul" },
-    { label: "aug" },
-    { label: "sep" },
-    { label: "oct" },
-    { label: "nov" },
-    { label: "dec" },
-  ];
-  const year = [
-    { label: "year", value: "2021" },
-    { label: "year", value: "2022" },
-  ];
+  // const month = [
+  //   { label: "jan" },
+  //   { label: "fev" },
+  //   { label: "mar" },
+  //   { label: "apr" },
+  //   { label: "may" },
+  //   { label: "jun" },
+  //   { label: "jul" },
+  //   { label: "aug" },
+  //   { label: "sep" },
+  //   { label: "oct" },
+  //   { label: "nov" },
+  //   { label: "dec" },
+  // ];
+  // const year = [
+  //   { label: "year", value: "2021" },
+  //   { label: "year", value: "2022" },
+  // ];
 
   return (
     <>
@@ -41,20 +41,6 @@ const ReportFilter = ({ sales, productName, qtySold, productCategory }) => {
           renderInput={(params) => (
             <TextField {...params} label="Product Category" />
           )}
-        />
-
-        <Autocomplete
-          sx={{ width: 300, height: 700 }}
-          options={productName}
-          getOptionLabel={(productName) => productName.value}
-          renderInput={(params) => <TextField {...params} />}
-        />
-
-        <Autocomplete
-          sx={{ width: 300, height: 700 }}
-          options={qtySold}
-          getOptionLabel={(qtySold) => qtySold.option}
-          renderInput={(params) => <TextField {...params} />}
         />
       </Grid>
       <></>
