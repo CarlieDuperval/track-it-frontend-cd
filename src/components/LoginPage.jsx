@@ -2,7 +2,7 @@
 // import { useState } from "react";
 // import bcrypt from "bcryptjs";
 
-// const salt = "$2b$10$A7/SX9iqJkE7jUs0vi38Gu";
+// const salt = " ";
 
 // const Login = ({ setToken, setIsUser, setUserId })=> {
 //   const [email, setEmail] = useState("");

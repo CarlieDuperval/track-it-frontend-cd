@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import ReportFilter from "./components/ReportFilter";
 import { Button, FormControl } from "@mui/material";
 import AddNewSale from "./components/AddNewSale";
+// import Hero from "./components/Home/Heros";
+// import Footer from "./components/Home/Footers";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -21,6 +23,8 @@ function App() {
       <Button sales={sales} />
       <AddNewSale sales={sales} />
       <FormControl sales={sales} />
+      {/* <Hero />
+      <Footer /> */}
     </div>
   );
 }

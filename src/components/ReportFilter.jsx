@@ -4,17 +4,8 @@ import { useState } from "react";
 
 const ReportFilter = ({ sales }) => {
   const [report, setReport] = useState([]);
-  const handleSubmit = () => {
-    fetch("http://localhost:3030/sales", {
-      method: "GET",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        report,
-      }),
-    })
-      .then((response) => response.text())
-      .then((sale) => sale.find({}).sort({})) // filter the report
-      .catch(console.error);
+  const handleSubmit = (e) => {
+    console.log("here ->", e);
   };
   return (
     <>
@@ -31,10 +22,21 @@ const ReportFilter = ({ sales }) => {
         <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={sales}
-          getOptionLabel={(productName) => productName.productCategory}
-          renderInput={(params) => (
-            <TextField {...params} label="Product Category" />
-          )}
+          getOptionLabel={(sale) => sale.productCategory}
+          onInputChange={(e) => handleSubmit(e)}
+          renderInput={(params) => {
+            // console.log(params);
+            return (
+              <TextField {...params} key={params.id} label="Product Category" />
+            );
+          }}
+          renderOption={(props, sale) => {
+            return (
+              <li {...props} key={sale._id}>
+                {sale.productCategory}
+              </li>
+            );
+          }}
         />
         <FormControl>
           <Input
@@ -42,6 +44,9 @@ const ReportFilter = ({ sales }) => {
             type="text"
             value={report} // calling sales from myBackend
             onChange={(e) => setReport(e.target.value)}
+            renderInput={(params) => (
+              <TextField {...params} label="Report By Category" />
+            )}
           />
           <Button onClick={() => handleSubmit()}>Submit</Button>
         </FormControl>
