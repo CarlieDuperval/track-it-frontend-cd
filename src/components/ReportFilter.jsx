@@ -1,5 +1,5 @@
 import Autocomplete from "@mui/material/Autocomplete";
-import { FormControl, Grid, TextField, Input } from "@mui/material";
+import { FormControl, Grid, TextField, Input, Button } from "@mui/material";
 import { useState } from "react";
 
 const ReportFilter = ({ sales }) => {
@@ -24,17 +24,18 @@ const ReportFilter = ({ sales }) => {
   //   //when i added the dependencies on the [] ; nothing show on my report
   // }, [inputCategory, inputName, productCategory, sales, productName]); // ????? I leave the useEffect[] without dependencies : error --> missing dependencies
   const [report, setReport] = useState([]);
-  fetch("http://localhost:3030/sales", {
-    method: "GET",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify({
-      report,
-    }),
-  })
-    .then((response) => response.text())
-    .then((sales) => sales.find({}).sort({}))
-    .catch(console.error);
-
+  const handleSubmit = () => {
+    fetch("http://localhost:3030/sales", {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        report,
+      }),
+    })
+      .then((response) => response.text())
+      .then((sale) => sale.find({}).sort({})) // doesn't work
+      .catch(console.error);
+  };
   return (
     <>
       <Grid container spacing={1}>
@@ -49,18 +50,20 @@ const ReportFilter = ({ sales }) => {
 
         <Autocomplete
           sx={{ width: 300, height: 70 }}
-          options={sales} // this is an array of
-          getOptionLabel={(productName) => productName.productCategory} // use to determine the disabled state for a given option
+          options={sales}
+          getOptionLabel={(productName) => productName.productCategory}
           renderInput={(params) => (
             <TextField {...params} label="Product Category" />
           )}
         />
         <FormControl>
           <Input
+            sx={{ width: 300, height: 70 }}
             type="text"
             value={report} // calling sales from myBackend
             onChange={(e) => setReport(e.target.value)}
           />
+          <Button onClick={() => handleSubmit()}>Submit</Button>
         </FormControl>
       </Grid>
       <></>
