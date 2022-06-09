@@ -32,7 +32,7 @@ const AddNewSale = () => {
       }),
     })
       .then((res) => res.text())
-      .then((sales) => sales.push.sale()) // I need to push to sale array
+      .then((sales) => sales.push.sale()) // push to sale array
       .catch(console.error);
   };
   return (

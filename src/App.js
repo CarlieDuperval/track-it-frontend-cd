@@ -2,7 +2,7 @@ import "./App.css";
 import Reports from "./components/Reports";
 import React, { useEffect, useState } from "react";
 import ReportFilter from "./components/ReportFilter";
-import { Button } from "@mui/material";
+import { Button, FormControl } from "@mui/material";
 import AddNewSale from "./components/AddNewSale";
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
       <Reports sales={sales} />
       <Button sales={sales} />
       <AddNewSale sales={sales} />
+      <FormControl sales={sales} />
     </div>
   );
 }

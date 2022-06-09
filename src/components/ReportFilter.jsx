@@ -1,5 +1,6 @@
 import Autocomplete from "@mui/material/Autocomplete";
-import { Grid, TextField } from "@mui/material";
+import { FormControl, Grid, TextField, Input } from "@mui/material";
+import { useState } from "react";
 
 const ReportFilter = ({ sales }) => {
   // const [inputName, setInputName] = useState();
@@ -22,6 +23,17 @@ const ReportFilter = ({ sales }) => {
   //   setInputCategory(filteredReport);
   //   //when i added the dependencies on the [] ; nothing show on my report
   // }, [inputCategory, inputName, productCategory, sales, productName]); // ????? I leave the useEffect[] without dependencies : error --> missing dependencies
+  const [report, setReport] = useState([]);
+  fetch("http://localhost:3030/sales", {
+    method: "GET",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({
+      report,
+    }),
+  })
+    .then((response) => response.text())
+    .then((sales) => sales.find({}).sort({}))
+    .catch(console.error);
 
   return (
     <>
@@ -43,6 +55,13 @@ const ReportFilter = ({ sales }) => {
             <TextField {...params} label="Product Category" />
           )}
         />
+        <FormControl>
+          <Input
+            type="text"
+            value={report} // calling sales from myBackend
+            onChange={(e) => setReport(e.target.value)}
+          />
+        </FormControl>
       </Grid>
       <></>
     </>
