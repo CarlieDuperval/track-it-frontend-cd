@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* import the components */}
       <ReportFilter sales={sales} />
       <Reports sales={sales} />
       <Button sales={sales} />
