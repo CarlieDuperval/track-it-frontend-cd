@@ -1,56 +1,49 @@
 import { useState } from "react";
+import { Input } from "@mui/material";
+import { Button } from "@mui/material";
+import { FormControl } from "@mui/material";
 
-const AddNewSale = ({ sales }) => {
-  //newSale = [ {year:" "  ,productName:"", productCategory:"", cost:"", price:"", qtySold:""}]
-  //let newYear = [{label:"2021", year:2021 , labe:"2022" , year:2022}]
-  //   const [year, setYear] = useState();
-  //   const [productName, setProduct] = useState();
-  //   const [productCategory, setProductCategory] = useState();
-  //   const [cost, setCost] = useState();
-  //   const [price, setPrice] = useState();
-  //   const [qtySold, setQtySold] = useState();
-  const [sale, setSale] = useState(sale);
-  if (
-    !year ||
-    !productName ||
-    !productCategory ||
-    !cost ||
-    !price ||
-    !qtySold
-  ) {
+const AddNewSale = () => {
+  const [sales, setSales] = useState();
+  let fields = [
+    { year: "year" },
+    { productName: "productName" },
+    { productCategory: "productCategory" },
+    { cost: "cost" },
+    { price: "price" },
+    { qtySold: "qtySold" },
+  ];
+  if (!fields) {
     return;
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     fetch("http://localhost:3030/sales", {
       method: "POST",
       headers: {
         " Content-type": "application/json",
       },
       body: JSON.stringify({
-        year,
-        productName,
-        productCategory,
-        cost,
-        price,
-        qtySold,
+        year: "year",
+        productName: "productName",
+        productCategory: "productCategory",
+        cost: "cost",
+        price: "price",
+        qtySold: "qtySold",
       }),
     })
-      .then((res) => res.text()) // or res.json()????
-      .then((sale) => sale.push.sales()) // I need to push the return value to my array of sale
-      .catch(console.error); // ??
+      .then((res) => res.text())
+      .then((sales) => sales.push.sale()) // I need to push to sale array
+      .catch(console.error);
   };
   return (
-    <form>
-      <input
+    <FormControl>
+      <Input
         type="text"
         value={sales} // calling sales from myBackend
-        onChange={(e) => setYear(e.target.value)}
+        onChange={(e) => setSales(e.target.value)}
       />
-      <button type="button" onClick={() => handleSubmit()}>
-        Add Sale
-      </button>
-    </form>
+      <Button onClick={() => handleSubmit()}>Add Sale</Button>
+    </FormControl>
   );
 };
 

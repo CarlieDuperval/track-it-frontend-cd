@@ -1,28 +1,28 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
 
-const ReportFilter = ({ sales, productCategory, productName }) => {
-  const [inputName, setInputName] = useState();
-  const [inputCategory, setInputCategory] = useState();
-  useEffect(() => {
-    let filteredReport = { productName, productCategory }; // set the report to product name or category
-    // if given inputName
-    if (inputName) {
-      // loop inside productName witch is inside sales collection , filter the inputName
-      filteredReport = filteredReport.filter(
-        (productName) => productName.sales === inputName // return inputName
-      );
-    }
-    setInputName(filteredReport);
-    if (inputCategory) {
-      filteredReport = filteredReport.filter(
-        (productCategory) => productCategory.sales === inputCategory
-      );
-    }
-    setInputCategory(filteredReport);
-    //when i added the dependencies on the [] ; nothing show on my report
-  }, [inputCategory, inputName, productCategory, sales, productName]); // ????? I leave the useEffect[] without dependencies : error --> missing dependencies
+const ReportFilter = ({ sales }) => {
+  // const [inputName, setInputName] = useState();
+  // const [inputCategory, setInputCategory] = useState();
+  // useEffect(() => {
+  //   let filteredReport = { productName, productCategory }; // set the report to product name or category
+  //   // if given inputName
+  //   if (inputName) {
+  //     // loop inside productName witch is inside sales collection , filter the inputName
+  //     filteredReport = filteredReport.filter(
+  //       (productName) => productName.sales === inputName // return inputName
+  //     );
+  //   }
+  //   setInputName(filteredReport);
+  //   if (inputCategory) {
+  //     filteredReport = filteredReport.filter(
+  //       (productCategory) => productCategory.sales === inputCategory
+  //     );
+  //   }
+  //   setInputCategory(filteredReport);
+  //   //when i added the dependencies on the [] ; nothing show on my report
+  // }, [inputCategory, inputName, productCategory, sales, productName]); // ????? I leave the useEffect[] without dependencies : error --> missing dependencies
+
   return (
     <>
       <Grid container spacing={1}>
