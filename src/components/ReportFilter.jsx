@@ -33,7 +33,7 @@ const ReportFilter = ({ sales }) => {
       }),
     })
       .then((response) => response.text())
-      .then((sale) => sale.find({}).sort({})) // doesn't work
+      .then((sale) => sale.find({}).sort({})) // filter the report
       .catch(console.error);
   };
   return (
