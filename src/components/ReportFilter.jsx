@@ -7,6 +7,12 @@ const ReportFilter = ({ sales }) => {
   const handleSubmit = (e) => {
     console.log("here ->", e);
   };
+
+  const getCategories = () => {
+    const cats = sales.map((s) => s.productCategory);
+
+    return [...new Set(cats)];
+  };
   return (
     <>
       <Grid container spacing={1}>
@@ -21,9 +27,10 @@ const ReportFilter = ({ sales }) => {
 
         <Autocomplete
           sx={{ width: 300, height: 70 }}
-          options={sales}
-          getOptionLabel={(sale) => sale.productCategory}
-          onInputChange={(e) => handleSubmit(e)}
+          options={getCategories()}
+          // getOptionLabel={(sale) => sale.productCategory}
+          // getOptionLabel={(sale) => sale}
+          onSelect={(e) => handleSubmit(e.target.value)}
           renderInput={(params) => {
             // console.log(params);
             return (
@@ -32,8 +39,8 @@ const ReportFilter = ({ sales }) => {
           }}
           renderOption={(props, sale) => {
             return (
-              <li {...props} key={sale._id}>
-                {sale.productCategory}
+              <li {...props} key={sale}>
+                {sale}
               </li>
             );
           }}
