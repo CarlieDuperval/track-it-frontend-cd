@@ -11,7 +11,7 @@ const ReportFilter = ({ sales }) => {
   const getCategories = () => {
     const cats = sales.map((s) => s.productCategory);
 
-    return [...new Set(cats)];
+    return [...new Set(cats)]; // set each category
   };
   return (
     <>
@@ -45,6 +45,7 @@ const ReportFilter = ({ sales }) => {
             );
           }}
         />
+
         {/* <FormControl>
           <Input
             sx={{ width: 300, height: 70 }}
