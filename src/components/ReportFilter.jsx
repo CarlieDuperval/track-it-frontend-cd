@@ -1,9 +1,9 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { FormControl, Grid, TextField, Input, Button } from "@mui/material";
-import { useState } from "react";
+//import { useState } from "react";
 
 const ReportFilter = ({ sales }) => {
-  const [report, setReport] = useState([]);
+  //const [report, setReport] = useState([]);
   const handleSubmit = (e) => {
     console.log("here ->", e);
   };
@@ -45,7 +45,7 @@ const ReportFilter = ({ sales }) => {
             );
           }}
         />
-        <FormControl>
+        {/* <FormControl>
           <Input
             sx={{ width: 300, height: 70 }}
             type="text"
@@ -56,7 +56,7 @@ const ReportFilter = ({ sales }) => {
             )}
           />
           <Button onClick={() => handleSubmit()}>Submit</Button>
-        </FormControl>
+        </FormControl> */}
       </Grid>
       <></>
     </>
