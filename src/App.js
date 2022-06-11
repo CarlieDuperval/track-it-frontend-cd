@@ -1,7 +1,11 @@
 import "./App.css";
-import Reports from "./components/Reports";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReportFilter from "./components/ReportFilter";
+import AddNewSale from "./components/AddNewSale";
+import Reports from "./components/Reports";
+import LoginPage from "./components/LoginPage";
+import { Button } from "@mui/material";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -14,9 +18,20 @@ function App() {
 
   return (
     <div className="App">
-      {/* import the components */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/addsale" element={<AddNewSale />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </BrowserRouter>
+
       <ReportFilter sales={sales} />
       <Reports sales={sales} />
+      <Button sales={sales} />
+      <AddNewSale sales={sales} setSales={setSales} />
+
+      {/* <Hero />
+      <Footer /> */}
     </div>
   );
 }

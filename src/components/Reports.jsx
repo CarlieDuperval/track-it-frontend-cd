@@ -2,7 +2,6 @@ import { DataGrid } from "@mui/x-data-grid";
 
 // import DataGrid to display a table with different field on my first page
 const columns = [
-  //   { field: "_id", headerName: "ID", width: 90 ,  },
   { field: "year", headerName: "Year", width: 90 },
   { field: "productName", headerName: "Product Name", width: 230 },
   { field: "productCategory", headerName: "Product Category", width: 130 },
@@ -93,20 +92,20 @@ const columns = [
     valueGetter: (params) => params.row.qtySold.dec, // getting va;ue from nested object
   },
 ];
-const Reports = ({ sales }) => {
-  //useEffect(() => {}, []).then((response) => response.json());
+const Reports = ({ sales, setSales }) => {
   return (
-    // style with css Property
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={sales} // set "sales" rows as Grid Row Property
-        getRowId={(row) => row._id} // return the row _id from mongoDatabase
-        columns={columns} // setting our columns as same type of Grid columns
-        pageSize={100} // setting the number of row in one page
-        rowsPerPageOptions={[1000]} // It's select the pageSize for the UI
-        checkboxSelection // allows to select rows
-      />
-    </div>
+    <>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={sales}
+          getRowId={(row) => row._id}
+          columns={columns}
+          pageSize={100}
+          rowsPerPageOptions={[1000]}
+          checkboxSelection // allows to select rows
+        />
+      </div>
+    </>
   );
 };
 
