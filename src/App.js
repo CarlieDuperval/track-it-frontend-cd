@@ -22,7 +22,7 @@ function App() {
       <Reports sales={sales} />
       <Button sales={sales} />
       <AddNewSale sales={sales} />
-      <FormControl sales={sales} />
+      {/* <FormControl sales={sales} /> */}
       {/* <Hero />
       <Footer /> */}
     </div>

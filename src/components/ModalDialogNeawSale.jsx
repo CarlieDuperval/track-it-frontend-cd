@@ -22,7 +22,7 @@
 //   return (
 //     <div className="ModalForm">
 //       <Button variant="contained" color="primary" onClick={handleOpen}>
-//         Sign up
+//         Add Sale
 //       </Button>
 //       {/* // display the modal and pass props */}
 //       <ModalDialog open={open} handleClose={handleClose} />
