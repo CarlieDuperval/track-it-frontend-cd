@@ -23,6 +23,7 @@ const ReportFilter = ({ sales }) => {
     const month = sales.map((s) => s.janQtySold);
     return [...new Set(month)];
   };
+
   return (
     <>
       <Grid container spacing={1}>
