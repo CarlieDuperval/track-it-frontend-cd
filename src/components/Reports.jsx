@@ -92,19 +92,20 @@ const columns = [
     valueGetter: (params) => params.row.qtySold.dec, // getting va;ue from nested object
   },
 ];
-const Reports = ({ sales }) => {
+const Reports = ({ sales, setSales }) => {
   return (
-    // style with css Property
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={sales}
-        getRowId={(row) => row._id}
-        columns={columns}
-        pageSize={100}
-        rowsPerPageOptions={[1000]}
-        checkboxSelection // allows to select rows
-      />
-    </div>
+    <>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={sales}
+          getRowId={(row) => row._id}
+          columns={columns}
+          pageSize={100}
+          rowsPerPageOptions={[1000]}
+          checkboxSelection // allows to select rows
+        />
+      </div>
+    </>
   );
 };
 
