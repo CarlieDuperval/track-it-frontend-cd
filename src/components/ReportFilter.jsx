@@ -2,6 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
 const ReportFilter = ({ sales }) => {
+
   const handleSubmit = (e) => {
     console.log("here ->", e);
   };
