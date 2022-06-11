@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 
 const Hero = () => {
-  const handleGetStarted = () => {};
+  const handleLogin = () => {};
   return (
     <div>
       <div className="textBlock">
@@ -11,8 +11,8 @@ const Hero = () => {
         </div>
         <div className="textCell">
           <p className="textHeader">Sales need to be track, Let's TrackIT</p>
-          <Button className="button" onClick={handleGetStarted}>
-            Get started
+          <Button className="button" onClick={handleLogin}>
+            Log In
           </Button>
         </div>
       </div>
