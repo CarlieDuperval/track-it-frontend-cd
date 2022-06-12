@@ -1,4 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
+import ReportFilter from "./ReportFilter";
 
 // import DataGrid to display a table with different field on my first page
 const columns = [
@@ -95,6 +96,7 @@ const columns = [
 const Reports = ({ sales, setSales }) => {
   return (
     <>
+      <ReportFilter sales={sales} />
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid
           rows={sales}

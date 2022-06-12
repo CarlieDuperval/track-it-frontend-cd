@@ -5,12 +5,14 @@ import ReportFilter from "./components/ReportFilter";
 import AddNewSale from "./components/AddNewSale";
 import Reports from "./components/Reports";
 import LoginPage from "./components/LoginPage";
+import SignUp from "./components/SignUp";
 import { Button } from "@mui/material";
+import Hero from "./components/Home/Hero";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
   useEffect(() => {
-    fetch("http://localhost:3030/sales")
+    fetch("https://track-it-backend-cd.web.app/sales")
       .then((response) => response.json())
       .then((data) => setSales(data))
       .catch((error) => console.error(error));
@@ -20,15 +22,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/addsale" element={<AddNewSale />} />
+          <Route path="/" element={<Hero />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/dashboard/"
+            element={<Reports sales={sales} setSales={setSales} />}
+          />
         </Routes>
       </BrowserRouter>
 
-      <ReportFilter sales={sales} />
-      <Reports sales={sales} />
-      <Button sales={sales} />
-      <AddNewSale sales={sales} setSales={setSales} />
+      {/* <Button sales={sales} /> */}
+      {/* <AddNewSale sales={sales} setSales={setSales} /> */}
 
       {/* <Hero />
       <Footer /> */}

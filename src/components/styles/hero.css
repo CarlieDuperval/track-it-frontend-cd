@@ -1,0 +1,26 @@
+.all-text {
+  padding: 50px;
+  height: 10vh;
+  overflow-y: scroll;
+  color: white;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(221, 82%, 51%);
+}
+
+.welcome {
+  /* background-image: url("https://img.freepik.com/free-photo/businessman-pointing-finger-stock-market-finance-graph-chart-exchange-money-growth-investment-global-economy-analysis-rate-economic-technology-background-with-digital-trading-data-business_79161-1950.jpg"); */
+  background-size: 300px 100px;
+  background-size: cover;
+
+  /* padding: 25px;
+  background-repeat: no-repeat;
+  background-size: auto; */
+}
+
+.hero-text {
+  color: white;
+  font-size: xx-large;
+  background-color: hsl(221, 82%, 51%);
+}
