@@ -10,7 +10,7 @@ const AddNewSale = ({ sales, setSales }) => {
   const [year, setYear] = useState(2022);
   const [cost, setCost] = useState(0.0);
   const [price, setPrice] = useState(0.0);
-  const [qtySold, setQtySold] = useState({ jan: 50 });
+  const [qtySold, setQtySold] = useState({ june: 500 });
 
   // TODO: FIX HANDLE SUBMIT
 
@@ -26,7 +26,8 @@ const AddNewSale = ({ sales, setSales }) => {
 
     console.log(data);
 
-    fetch("http://localhost:3030/sales", {
+    fetch("https://track-it-backend-cd.web.app/sales", {
+      // fetch("http://localhost:5050/sales", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -84,14 +85,10 @@ const AddNewSale = ({ sales, setSales }) => {
         label="Year"
         variant="filled"
       />
-      <TextField
-        type="month"
-        value={year}
-        onChange={(e) => setYear(e.target.value)}
-        label="Year"
-        variant="filled"
-      />
-      <Button onClick={() => handleSubmit()}>Add Sale</Button>
+
+      <Button className="addButton" onClick={() => handleSubmit()}>
+        Add Sale
+      </Button>
     </FormControl>
   );
 };

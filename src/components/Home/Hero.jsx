@@ -1,10 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { Link } from "@mui/material";
 import "../styles/hero.css";
 
 const Hero = () => {
-  const handleLogin = () => {};
+  //const handleLogin = (e) => {};
   return (
     <div>
       <div className="textBlock">
