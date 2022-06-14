@@ -1,7 +1,7 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales, setDisplaySales }) => {
+const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
   const handleProduct = (productName) => {
     if (!productName.length) {
       console.log("this is the product", productName.length);
@@ -41,10 +41,23 @@ const ReportFilter = ({ sales, setDisplaySales }) => {
   //   const year = sales.map((s) => s.year);
   //   return [...new Set(year)];
   // };
-  // const getMonth = () => {
-  //   const month = sales.map((s) => s.janQtySold);
-  //   return [...new Set(month)];
-  // };
+  const getMonth = () => {
+    return [
+      "All",
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "jun",
+      "jul",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ];
+  };
 
   return (
     <>
@@ -52,8 +65,6 @@ const ReportFilter = ({ sales, setDisplaySales }) => {
         <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={getProductName()}
-          //options={sales} // an array
-          //getOptionLabel={(option) => option.productName} // determine a string value for a given option
           onSelect={(e) => handleProduct(e.target.value)}
           renderInput={(params) => {
             return (
@@ -65,11 +76,8 @@ const ReportFilter = ({ sales, setDisplaySales }) => {
         <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={getCategories()}
-          // getOptionLabel={(sale) => sale.productCategory}
-          // getOptionLabel={(sale) => sale}
           onSelect={(e) => handleCategorySelect(e.target.value)}
           renderInput={(params) => {
-            // console.log(params);
             return (
               <TextField {...params} key={params.id} label="Product Category" />
             );
@@ -97,10 +105,10 @@ const ReportFilter = ({ sales, setDisplaySales }) => {
             );
           }}
         /> */}
-        {/* <Autocomplete
+        <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={getMonth()}
-          onSelect={(e) => handleSubmit(e.target.value)}
+          onSelect={(e) => handleMonthSelect(e.target.value)}
           renderInput={(params) => {
             return <TextField {...params} key={params.id} label="Month" />;
           }}
@@ -111,7 +119,7 @@ const ReportFilter = ({ sales, setDisplaySales }) => {
               </li>
             );
           }}
-        /> */}
+        />
       </Grid>
     </>
   );
