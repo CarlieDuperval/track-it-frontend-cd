@@ -1,14 +1,15 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
+// import CustomFooterTotal from "./CustomFooter";
 
+//Passing props
 const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
   const handleProduct = (productName) => {
     if (!productName.length) {
-      console.log("this is the product", productName.length);
       setDisplaySales(sales);
       return;
     }
-
+    // set filter for product inside my array: sales
     const filteredProducts = sales.filter(
       (product) => product.productName === productName
     );

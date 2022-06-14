@@ -291,7 +291,7 @@ const Login = () => {
             <button
               onClick={(e) => handleGoogleLogin(e.target.value)}
               style={{
-                backgroundColor: "red",
+                backgroundColor: "blue",
                 color: "white",
                 border: "none",
               }}

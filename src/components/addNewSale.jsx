@@ -42,7 +42,6 @@ const AddNewSale = ({ sales, setSales }) => {
         return res.json();
       })
       .then((sale) => {
-        console.log("We are here");
         setSales([...sales, sale]);
         navigate("/dashboard");
       })
@@ -92,7 +91,6 @@ const AddNewSale = ({ sales, setSales }) => {
         label="Year"
         variant="filled"
       />
-
       <Button onClick={() => handleSubmit()}>Add New Sale</Button>
     </FormControl>
   );

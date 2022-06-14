@@ -17,7 +17,7 @@ const jan = {
   field: "jan",
   headerName: "Jan Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.jan,
 };
 
@@ -25,7 +25,7 @@ const feb = {
   field: "feb",
   headerName: "Feb Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.feb,
 };
 
@@ -33,7 +33,7 @@ const mar = {
   field: "mar",
   headerName: "Mar Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.mar,
 };
 
@@ -41,14 +41,14 @@ const apr = {
   field: "apr",
   headerName: "Apr Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.apr,
 };
 const may = {
   field: "may",
   headerName: "May Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.may,
 };
 
@@ -56,7 +56,7 @@ const jun = {
   field: "jun",
   headerName: "Jun Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.jun,
 };
 
@@ -64,7 +64,7 @@ const jul = {
   field: "jul",
   headerName: "Jul Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.jul,
 };
 
@@ -72,7 +72,7 @@ const aug = {
   field: "aug",
   headerName: "Aug Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.aug,
 };
 
@@ -80,7 +80,7 @@ const sep = {
   field: "sep",
   headerName: "Sep Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.sep,
 };
 
@@ -88,7 +88,7 @@ const oct = {
   field: "oct",
   headerName: "Oct Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.oct,
 };
 
@@ -96,7 +96,7 @@ const nov = {
   field: "nov",
   headerName: "Nov Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.nov,
 };
 
@@ -104,7 +104,7 @@ const dec = {
   field: "dec",
   headerName: "Dec Qty Sold",
   type: "number",
-  width: 90,
+  width: 130,
   valueGetter: (params) => params.row.qtySold.dec, // getting va;ue from nested object
 };
 
@@ -125,6 +125,7 @@ const allMonths = {
 const Reports = ({ sales, setDisplaySales, displaySales }) => {
   const navigate = useNavigate();
 
+  //useState to track the month
   const [displayCols, setDisplayCols] = useState([
     ...columns,
     ...Object.values(allMonths),
@@ -146,17 +147,17 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
         setDisplaySales={setDisplaySales}
         handleMonthSelect={handleMonthSelect}
       />
-      <div style={{ height: 400, width: "100%" }}>
+      <Button onClick={() => navigate("/add-newsale")}>Add Sale</Button>
+      <div style={{ height: 800, width: "100%" }}>
         <DataGrid
           rows={displaySales}
           getRowId={(row) => row._id}
           columns={displayCols}
           pageSize={100}
           rowsPerPageOptions={[1000]}
-          checkboxSelection // allows to select rows
+          //checkboxSelection // allows to select rows
         />
       </div>
-      <Button onClick={() => navigate("/add-newsale")}>Add Sale</Button>
     </>
   );
 };
