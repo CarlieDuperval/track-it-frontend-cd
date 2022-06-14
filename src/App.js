@@ -9,7 +9,7 @@ import SignUp from "./components/SignUp";
 //import { Button } from "@mui/material";
 import Hero from "./components/Home/Hero";
 import config from "./config/config";
-import { display } from "@mui/system";
+//import { display } from "@mui/system";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
