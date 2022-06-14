@@ -214,7 +214,7 @@ export function Copyright(props) {
       {...props}
     >
       {"TrackIT © "}
-      {/* <Link color="inherit" href="http://localhost:3000"></Link> */}{" "}
+      {/* <Link color="inherit" href="http://localhost:3000"></Link>{" "} */}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -227,7 +227,12 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
   };
+  const handleGoogleLogin = () => {};
 
   return (
     <ThemeProvider theme={theme}>
@@ -246,7 +251,8 @@ const Login = () => {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={(e) => handleSubmit(e.target.value)}
+            // onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 3 }}
           >
@@ -283,7 +289,7 @@ const Login = () => {
               Sign In
             </Button>
             <button
-              onClick={handleGoogleLogin}
+              onClick={(e) => handleGoogleLogin(e.target.value)}
               style={{
                 backgroundColor: "red",
                 color: "white",
