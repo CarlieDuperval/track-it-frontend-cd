@@ -3,6 +3,8 @@ import { Button } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import config from "../config/config";
 
 const AddNewSale = ({ sales, setSales }) => {
   const [productName, setProductName] = useState("");
@@ -11,6 +13,7 @@ const AddNewSale = ({ sales, setSales }) => {
   const [cost, setCost] = useState(0.0);
   const [price, setPrice] = useState(0.0);
   const [qtySold, setQtySold] = useState({ june: 500 });
+  const navigate = useNavigate();
 
   // TODO: FIX HANDLE SUBMIT
 
@@ -26,18 +29,22 @@ const AddNewSale = ({ sales, setSales }) => {
 
     console.log(data);
 
-    fetch("https://track-it-backend-cd.web.app/sales", {
-      // fetch("http://localhost:5050/sales", {
+    //fetch("https://track-it-backend-cd.web.app/sales", {
+    fetch(config.apiUrl, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("We are there");
+        return res.json();
+      })
       .then((sale) => {
-        //sales.push(sale);
+        console.log("We are here");
         setSales([...sales, sale]);
+        navigate("/dashboard");
       })
       .catch(console.error);
   };
@@ -86,9 +93,7 @@ const AddNewSale = ({ sales, setSales }) => {
         variant="filled"
       />
 
-      <Button className="addButton" onClick={() => handleSubmit()}>
-        Add Sale
-      </Button>
+      <Button onClick={() => handleSubmit()}>Add New Sale</Button>
     </FormControl>
   );
 };

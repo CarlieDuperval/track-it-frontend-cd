@@ -1,10 +1,30 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
-const ReportFilter = ({ sales }) => {
+const ReportFilter = ({ sales, setDisplaySales }) => {
+  const handleProduct = (productName) => {
+    if (!productName.length) {
+      console.log("this is the product", productName.length);
+      setDisplaySales(sales);
+      return;
+    }
 
-  const handleSubmit = (e) => {
-    console.log("here ->", e);
+    const filteredProducts = sales.filter(
+      (product) => product.productName === productName
+    );
+
+    setDisplaySales(filteredProducts);
+  };
+
+  const handleCategorySelect = (productCategory) => {
+    if (!productCategory.trim()) {
+      setDisplaySales(sales);
+    }
+
+    const filteredProducts = sales.filter(
+      (product) => product.productCategory === productCategory
+    );
+    setDisplaySales(filteredProducts);
   };
 
   const getProductName = () => {
@@ -16,14 +36,15 @@ const ReportFilter = ({ sales }) => {
 
     return [...new Set(cats)]; // set each category
   };
-  const getYear = () => {
-    const year = sales.map((s) => s.year);
-    return [...new Set(year)];
-  };
-  const getMonth = () => {
-    const month = sales.map((s) => s.janQtySold);
-    return [...new Set(month)];
-  };
+
+  // const getYear = () => {
+  //   const year = sales.map((s) => s.year);
+  //   return [...new Set(year)];
+  // };
+  // const getMonth = () => {
+  //   const month = sales.map((s) => s.janQtySold);
+  //   return [...new Set(month)];
+  // };
 
   return (
     <>
@@ -33,7 +54,7 @@ const ReportFilter = ({ sales }) => {
           options={getProductName()}
           //options={sales} // an array
           //getOptionLabel={(option) => option.productName} // determine a string value for a given option
-          onSelect={(e) => handleSubmit(e.target.value)}
+          onSelect={(e) => handleProduct(e.target.value)}
           renderInput={(params) => {
             return (
               <TextField {...params} key={params.id} label="Product Name" />
@@ -46,7 +67,7 @@ const ReportFilter = ({ sales }) => {
           options={getCategories()}
           // getOptionLabel={(sale) => sale.productCategory}
           // getOptionLabel={(sale) => sale}
-          onSelect={(e) => handleSubmit(e.target.value)}
+          onSelect={(e) => handleCategorySelect(e.target.value)}
           renderInput={(params) => {
             // console.log(params);
             return (
@@ -61,7 +82,7 @@ const ReportFilter = ({ sales }) => {
             );
           }}
         />
-        <Autocomplete
+        {/* <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={getYear()}
           onSelect={(e) => handleSubmit(e.target.value)}
@@ -75,8 +96,8 @@ const ReportFilter = ({ sales }) => {
               </li>
             );
           }}
-        />
-        <Autocomplete
+        /> */}
+        {/* <Autocomplete
           sx={{ width: 300, height: 70 }}
           options={getMonth()}
           onSelect={(e) => handleSubmit(e.target.value)}
@@ -90,7 +111,7 @@ const ReportFilter = ({ sales }) => {
               </li>
             );
           }}
-        />
+        /> */}
       </Grid>
     </>
   );
