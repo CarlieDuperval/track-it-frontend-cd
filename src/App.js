@@ -5,9 +5,9 @@ import AddNewSale from "./components/AddNewSale";
 import Reports from "./components/Reports";
 import LoginPage from "./components/LoginPage";
 import SignUp from "./components/SignUp";
-import Hero from "./components/Home/Hero";
+import HomePage from "./components/Home/HomePage";
 import config from "./config/config";
-import { contextProvider } from "./contextProvider";
+import ContextProvider from "./ContextProvider";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -24,10 +24,10 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <contextProvider>
+      <ContextProvider>
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Hero />} />
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/add-newsale"
               element={
@@ -47,13 +47,8 @@ function App() {
               }
             />
           </Routes>
-        </contextProvider>
-      </BrowserRouter>
-
-      {/* <Button sales={sales} /> */}
-
-      {/* <Hero />
-      <Footer /> */}
+        </BrowserRouter>
+      </ContextProvider>
     </div>
   );
 }

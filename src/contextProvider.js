@@ -2,18 +2,18 @@ import { createContext, useState } from "react";
 
 export const UserContext = createContext({});
 
-const UserContextChoice = ({ user }) => {
+const UserContextProvider = ({ children }) => {
   const { Provider } = UserContext;
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState();
   const [jwt, setJwt] = useState("");
 
   const value = {
-    user,
-    setUser,
+    users,
+    setUsers,
     jwt,
     setJwt,
   };
 
-  return <Provider value={value}>{user}</Provider>;
+  return <Provider value={value}>{children}</Provider>;
 };
-export default UserContextChoice;
+export default UserContextProvider;

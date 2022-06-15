@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import "../styles/hero.css";
+import "../styles/HomePage.css";
 
-const Hero = () => {
+const HomePage = () => {
   //const handleLogin = (e) => {};
   return (
     <div>
@@ -23,4 +23,4 @@ const Hero = () => {
   );
   //document.getElementById("main").scrollIntoView({ behavior: "smooth" });
 };
-export default Hero;
+export default HomePage;
