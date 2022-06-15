@@ -204,6 +204,16 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import app from "../Secret/secret";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { AuthContext } from "../../App";
 
 export function Copyright(props) {
   return (
