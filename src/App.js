@@ -7,6 +7,7 @@ import LoginPage from "./components/LoginPage";
 import SignUp from "./components/SignUp";
 import Hero from "./components/Home/Hero";
 import config from "./config/config";
+import { contextProvider } from "./contextProvider";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -24,27 +25,29 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route
-            path="/add-newsale"
-            element={
-              <AddNewSale sales={displaySales} setSales={setDisplaySales} />
-            }
-          />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route
-            path="/dashboard"
-            element={
-              <Reports
-                sales={sales}
-                displaySales={displaySales}
-                setDisplaySales={setDisplaySales}
-              />
-            }
-          />
-        </Routes>
+        <contextProvider>
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route
+              path="/add-newsale"
+              element={
+                <AddNewSale sales={displaySales} setSales={setDisplaySales} />
+              }
+            />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/dashboard"
+              element={
+                <Reports
+                  sales={sales}
+                  displaySales={displaySales}
+                  setDisplaySales={setDisplaySales}
+                />
+              }
+            />
+          </Routes>
+        </contextProvider>
       </BrowserRouter>
 
       {/* <Button sales={sales} /> */}
