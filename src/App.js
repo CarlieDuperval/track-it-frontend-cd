@@ -1,15 +1,12 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-//import ReportFilter from "./components/ReportFilter";
 import AddNewSale from "./components/AddNewSale";
 import Reports from "./components/Reports";
 import LoginPage from "./components/LoginPage";
 import SignUp from "./components/SignUp";
-//import { Button } from "@mui/material";
 import Hero from "./components/Home/Hero";
 import config from "./config/config";
-//import { display } from "@mui/system";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales

@@ -1,10 +1,12 @@
 // import { Input } from "@mui/material";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "../config/config";
+import Autocomplete from "@mui/material/Autocomplete";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const AddNewSale = ({ sales, setSales }) => {
   const [productName, setProductName] = useState("");
@@ -12,10 +14,10 @@ const AddNewSale = ({ sales, setSales }) => {
   const [year, setYear] = useState(2022);
   const [cost, setCost] = useState(0.0);
   const [price, setPrice] = useState(0.0);
-  const [qtySold, setQtySold] = useState({ june: 500 });
+  const [qtySold, setQtySold] = useState({});
+  const [month, setMonth] = useState("jan");
+  const [qty, setQty] = useState(0);
   const navigate = useNavigate();
-
-  // TODO: FIX HANDLE SUBMIT
 
   const handleSubmit = () => {
     const data = {
@@ -48,14 +50,31 @@ const AddNewSale = ({ sales, setSales }) => {
       .catch(console.error);
   };
 
-  const handleQtySold = (month, qty) => {
+  const handleQtySold = () => {
     const newQtySold = { ...qtySold };
     newQtySold[month] = qty;
     setQtySold(newQtySold);
   };
 
+  const getMonth = () => {
+    return [
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "may",
+      "jun",
+      "jul",
+      "aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ];
+  };
+
   return (
-    <FormControl>
+    <FormControl className="form-add-sale">
       <TextField
         type="text"
         label="Product Category"
@@ -91,6 +110,28 @@ const AddNewSale = ({ sales, setSales }) => {
         label="Year"
         variant="filled"
       />
+      <Grid container>
+        <Autocomplete
+          sx={{ width: 300, height: 70 }}
+          options={getMonth()}
+          onSelect={(e) => setMonth(e.target.value)}
+          renderInput={(params) => {
+            return <TextField variant="filled" {...params} label="Month" />;
+          }}
+        />
+
+        <TextField
+          type="number"
+          value={qty}
+          onChange={(e) => setQty(e.target.value)}
+          label="Qty"
+          variant="filled"
+        />
+
+        <Button onClick={() => handleQtySold()}>
+          <AddCircleIcon />
+        </Button>
+      </Grid>
       <Button onClick={() => handleSubmit()}>Add New Sale</Button>
     </FormControl>
   );
