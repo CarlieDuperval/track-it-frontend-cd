@@ -11,12 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import app from "../Secret/secret";
 //import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export function Copyright(props) {
   return (
@@ -55,14 +50,13 @@ const LoginPage = () => {
       });
   };
 
-  // const handleSubmit = (event) => {
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
-
+  const handleSubmit = (event) => {
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+  };
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
