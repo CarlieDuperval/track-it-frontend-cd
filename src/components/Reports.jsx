@@ -131,7 +131,19 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
     ...Object.values(allMonths),
   ]);
 
-  const handleMonthSelect = (month) => {
+  const handleMonthSelect = (month, values) => {
+    if (values) {
+      const displayCols = [...columns];
+
+      values.forEach((val) => {
+        displayCols.push(allMonths[val]);
+      });
+
+      setDisplayCols(displayCols);
+
+      return;
+    }
+
     if (!month || month === "All") {
       setDisplayCols([...columns, ...Object.values(allMonths)]);
       return;

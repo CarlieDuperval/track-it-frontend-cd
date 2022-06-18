@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import HomePage from "./components/Home/HomePage";
 import config from "./config/config";
 import ContextProvider from "./ContextProvider";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -27,7 +28,7 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route
               path="/add-newsale"
               element={

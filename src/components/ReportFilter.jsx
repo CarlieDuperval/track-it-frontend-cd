@@ -107,9 +107,11 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
           }}
         /> */}
         <Autocomplete
+          multiple
           sx={{ width: 300, height: 70 }}
           options={getMonth()}
           onSelect={(e) => handleMonthSelect(e.target.value)}
+          onChange={(e, values) => handleMonthSelect(e.target.value, values)}
           renderInput={(params) => {
             return <TextField {...params} key={params.id} label="Month" />;
           }}

@@ -27,6 +27,7 @@ export function Copyright(props) {
     </Typography>
   );
 }
+
 const theme = createTheme();
 
 const LoginPage = () => {
