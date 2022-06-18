@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddNewSale from "./components/AddNewSale";
 import Reports from "./components/Reports";
-import LoginPage from "./components/LoginPage";
-import SignUp from "./components/SignUp";
-import HomePage from "./components/Home/HomePage";
-import config from "./config/config";
+// import LoginPage from "./components/LoginPage";
+// import SignUp from "./components/SignUp";
+// import HomePage from "./components/Home/HomePage";
+ import config from "./config/config";
 import ContextProvider from "./ContextProvider";
-import LandingPage from "./components/LandingPage";
+import NewLandingPage from "../src/components/NewLandingPage";
+import UserContextProvider from "./ContextProvider";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
@@ -24,20 +25,21 @@ function App() {
   }, []);
 
   return (
+    <UserContextProvider>
     <div className="App">
       <ContextProvider>
         <BrowserRouter>
           <Routes>
             {/* <Route path="/" element={<LandingPage />} /> */}
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<NewLandingPage />} />
             <Route
               path="/add-newsale"
               element={
                 <AddNewSale sales={displaySales} setSales={setDisplaySales} />
               }
             />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUp />} />
+            {/* <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUp />} /> */}
             <Route
               path="/dashboard"
               element={
@@ -52,6 +54,7 @@ function App() {
         </BrowserRouter>
       </ContextProvider>
     </div>
+    </UserContextProvider>
   );
 }
 
