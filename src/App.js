@@ -28,7 +28,8 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            {/* <Route path="/" element={<LandingPage />} /> */}
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/add-newsale"
               element={

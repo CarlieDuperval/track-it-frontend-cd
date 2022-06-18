@@ -9,18 +9,24 @@
   background-color: hsl(221, 82%, 51%);
 }
 
-.welcome {
-  /* background-image: url("https://img.freepik.com/free-photo/businessman-pointing-finger-stock-market-finance-graph-chart-exchange-money-growth-investment-global-economy-analysis-rate-economic-technology-background-with-digital-trading-data-business_79161-1950.jpg"); */
-  background-size: 300px 100px;
-  background-size: cover;
-
-  /* padding: 25px;
+/* .welcome { */
+/* background-size: 300px 100px;
+  background-size: cover; */
+/* padding: 25px;
   background-repeat: no-repeat;
   background-size: auto; */
-}
+/* } */
 
 .hero-text {
-  color: white;
+  color: rgb(7, 7, 7);
   font-size: xx-large;
-  background-color: hsl(221, 82%, 51%);
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  /* background-color: hsl(221, 82%, 51%); */
+}
+.back-img {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }

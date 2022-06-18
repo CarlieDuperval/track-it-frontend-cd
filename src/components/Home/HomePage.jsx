@@ -1,26 +1,42 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import "../styles/HomePage.css";
+// import graph from "../../assets/graph.png";
 
 const HomePage = () => {
   //const handleLogin = (e) => {};
   return (
     <div>
-      <div className="textBlock">
-        <h1 className="all-text">Welcome To Track IT</h1>
+      {/* <img className="back-img" src="logoblackwhite.png" alt="logo track it" /> */}
+      <div>
         <Button className="button" href="/login">
           Log In
         </Button>
-        <div className="welcome">
+      </div>
+      <div>
+        <h1 className="all-text">Track IT</h1>
+        {/* <img src="graph.png" alt="chart of sales" /> */}
+        <img className="graph" src="finance-chart.png" alt="chart of sales" />
+      </div>
+      <></>
+      <div>
+        <span>
+          {/* <div className="textBlock"> */}
+          {/* <div className="welcome"> */}
           <p className="hero-text">
-            Sales need to be track for better decision Making. <br />
-            This App allows decision makers query quick report their monthly
-            sales. <br /> Let's TrackIT
+            Sales need to be track properly. <br />
+            Our goal is to track the sales for better decision making whit query
+            quick a quick search. sales. <br /> Let's TrackIT
           </p>
-        </div>
+          {/* </div> */}
+          {/* </div> */}
+        </span>
+        <img
+          src="finance-conference.png"
+          alt="conference  table with 5 persons"
+        />
       </div>
     </div>
   );
-  //document.getElementById("main").scrollIntoView({ behavior: "smooth" });
 };
 export default HomePage;

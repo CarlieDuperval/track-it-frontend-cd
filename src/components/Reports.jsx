@@ -159,7 +159,15 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
         setDisplaySales={setDisplaySales}
         handleMonthSelect={handleMonthSelect}
       />
-      <Button onClick={() => navigate("/add-newsale")}>Add Sale</Button>
+      <Button
+        type="submit"
+        //fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+        onClick={() => navigate("/add-newsale")}
+      >
+        Add Sale
+      </Button>
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
           rows={displaySales}

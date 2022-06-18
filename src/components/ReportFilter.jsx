@@ -1,6 +1,5 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
-// import CustomFooterTotal from "./CustomFooter";
 
 //Passing props
 const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
@@ -110,7 +109,7 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
           multiple
           sx={{ width: 300, height: 70 }}
           options={getMonth()}
-          onSelect={(e) => handleMonthSelect(e.target.value)}
+          onSelect={(e, values) => handleMonthSelect(e.target.value, values)}
           onChange={(e, values) => handleMonthSelect(e.target.value, values)}
           renderInput={(params) => {
             return <TextField {...params} key={params.id} label="Month" />;
