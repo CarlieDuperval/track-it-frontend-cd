@@ -1,8 +1,18 @@
 import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
 
 //Passing props
 const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
+  
+  const [nameOptions, setNameOptions] = useState([])
+  const [prodName, setProdName] = useState("")
+  
+  useEffect(() =>{
+      setNameOptions(getProductNames())
+  }, [prodName] )
+  
   const handleProduct = (productName) => {
     if (!productName.trim()) {
       setDisplaySales(sales);
@@ -27,9 +37,10 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
     setDisplaySales(filteredProducts);
   };
 
-  const getProductName = () => {
-    const prodName = sales.map((s) => s.productName);
-    return [...new Set(prodName)];
+  const getProductNames = () => {
+    let prodNames = sales.map((s) => s.productName);
+    // prodNames = prodNames.slice(0, 50)
+    return [...new Set(prodNames)];
   };
   const getCategories = () => {
     const cats = sales.map((s) => s.productCategory);
@@ -43,7 +54,7 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
   // };
   const getMonth = () => {
     return [
-      // "All",
+      "All",
       "jan",
       "feb",
       "mar",
@@ -63,14 +74,28 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
     <>
       <Grid container spacing={1}>
         <Autocomplete
+         autoComplete
+         filterSelectedOptions
           sx={{ width: 300, height: 70 }}
-          options={getProductName()}
+          filterOptions={(x) => x}
+          options={nameOptions}
           onSelect={(e) => handleProduct(e.target.value)}
+          onChange={(event, newValue) => {
+            setNameOptions(newValue ? [newValue, ...setNameOptions] : setNameOptions);
+            //setProdName(newValue);
+          }}
+          onInputChange={(event, newInputValue) => {
+            setProdName(newInputValue);
+          }}
           renderInput={(params) => {
             return (
               <TextField {...params} key={params.id} label="Product Name" />
             );
           }}
+          // renderOption={(option) =>{ 
+          //   console.log(option)
+          // return <span key={option.id}>{option.key}</span>
+        // }}
         />
 
         <Autocomplete

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import config from "../config/config";
 import Autocomplete from "@mui/material/Autocomplete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import Copyright from "./Home/Copyright";
 
 const AddNewSale = ({ sales, setSales }) => {
   const [productName, setProductName] = useState("");
@@ -29,9 +30,6 @@ const AddNewSale = ({ sales, setSales }) => {
       qtySold,
     };
 
-    console.log(data);
-
-    //fetch("https://track-it-backend-cd.web.app/sales", {
     fetch(config.apiUrl, {
       method: "POST",
       body: JSON.stringify(data),
@@ -40,7 +38,6 @@ const AddNewSale = ({ sales, setSales }) => {
       },
     })
       .then((res) => {
-        console.log("We are there");
         return res.json();
       })
       .then((sale) => {
@@ -132,7 +129,10 @@ const AddNewSale = ({ sales, setSales }) => {
           <AddCircleIcon />
         </Button>
       </Grid>
-      <Button onClick={() => handleSubmit()}>Add New Sale</Button>
+      <Button fullWidth
+        variant="contained" onClick={() => handleSubmit()}>Add New Sale</Button>
+
+      <Copyright  />
     </FormControl>
   );
 };

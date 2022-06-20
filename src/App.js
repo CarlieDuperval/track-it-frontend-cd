@@ -1,28 +1,32 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddNewSale from "./components/AddNewSale";
 import Reports from "./components/Reports";
-// import LoginPage from "./components/LoginPage";
-// import SignUp from "./components/SignUp";
-// import HomePage from "./components/Home/HomePage";
- import config from "./config/config";
-import ContextProvider from "./ContextProvider";
+import config from "./config/config";
+import ContextProvider, { UserContext } from "./ContextProvider";
 import NewLandingPage from "../src/components/NewLandingPage";
 import UserContextProvider from "./ContextProvider";
 
 function App() {
   const [sales, setSales] = useState([]); // To display the sales
   const [displaySales, setDisplaySales] = useState([]);
+  const { jwt } = useContext(UserContext)
+
   useEffect(() => {
-    fetch(config.apiUrl)
+    fetch(config.apiUrl, {
+      method: 'GET',
+      headers: {
+        Authorization: jwt
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         setSales(data);
         setDisplaySales(data);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [jwt]);
 
   return (
     <UserContextProvider>
@@ -30,7 +34,6 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<LandingPage />} /> */}
             <Route path="/" element={<NewLandingPage />} />
             <Route
               path="/add-newsale"
@@ -38,8 +41,6 @@ function App() {
                 <AddNewSale sales={displaySales} setSales={setDisplaySales} />
               }
             />
-            {/* <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUp />} /> */}
             <Route
               path="/dashboard"
               element={

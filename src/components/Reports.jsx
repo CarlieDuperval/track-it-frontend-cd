@@ -1,8 +1,10 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import ReportFilter from "./ReportFilter";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Copyright } from "@mui/icons-material";
+
 
 // import DataGrid to display a table with different field on my first page
 const columns = [
@@ -154,20 +156,25 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
 
   return (
     <>
+    <Grid container>
+      <Grid item xs={10}>
       <ReportFilter
         sales={sales}
         setDisplaySales={setDisplaySales}
         handleMonthSelect={handleMonthSelect}
       />
+      </Grid>
+      <Grid item xs={2} alignItems='center' alignContent='center'>
       <Button
         type="submit"
-        //fullWidth
+        fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2 }}
         onClick={() => navigate("/add-newsale")}
       >
         Add Sale
       </Button>
+      </Grid>
+      </Grid>
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
           rows={displaySales}
@@ -175,8 +182,9 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
           columns={displayCols}
           pageSize={100}
           rowsPerPageOptions={[1000]}
-          //checkboxSelection // allows to select rows
+          checkboxSelection // allows to select rows
         />
+        <Copyright />
       </div>
     </>
   );
