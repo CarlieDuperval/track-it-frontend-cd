@@ -4,6 +4,7 @@ import ReportFilter from "./ReportFilter";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Copyright } from "@mui/icons-material";
+import FooterColumns from './FooterColumns'
 
 
 // import DataGrid to display a table with different field on my first page
@@ -184,6 +185,9 @@ const Reports = ({ sales, setDisplaySales, displaySales }) => {
           rowsPerPageOptions={[1000]}
           checkboxSelection // allows to select rows
         />
+         < FooterColumns />
+       
+       
         <Copyright />
       </div>
     </>
