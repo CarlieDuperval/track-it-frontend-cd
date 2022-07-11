@@ -21,11 +21,11 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
       setDisplaySales(sales);
     }
 
-    const filteredProducts = sales.filter(
-      (product) => product.productCategory === productCategory
-    );
-    setDisplaySales(filteredProducts);
-  };
+  //   const filteredProducts = sales.filter(
+  //     (product) => product.productCategory === productCategory
+  //   );
+  //   setDisplaySales(filteredProducts);
+  // };
 
   const getProductName = () => {
     const prodName = sales.map((s) => s.productName);
