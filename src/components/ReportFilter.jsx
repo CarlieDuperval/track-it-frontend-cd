@@ -2,7 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { Grid, TextField } from "@mui/material";
 
 //Passing props
-const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
+const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect,  }) => {
   const handleProduct = (productName) => {
     if (!productName.trim()) {
       setDisplaySales(sales);
@@ -16,16 +16,28 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
     setDisplaySales(filteredProducts);
   };
 
+  const handleYearSelect = (year) => {
+    if(!year.trim()){
+      setDisplaySales(sales)
+    }
+    const filteredYears = sales.filter(
+      (yearSel) => yearSel.year === year
+
+    )
+   setDisplaySales(filteredYears)
+
+  }
+
   const handleCategorySelect = (productCategory) => {
     if (!productCategory.trim()) {
       setDisplaySales(sales);
     }
 
-  //   const filteredProducts = sales.filter(
-  //     (product) => product.productCategory === productCategory
-  //   );
-  //   setDisplaySales(filteredProducts);
-  // };
+    const filteredProducts = sales.filter(
+      (product) => product.productCategory === productCategory
+    );
+    setDisplaySales(filteredProducts);
+  };
 
   const getProductName = () => {
     const prodName = sales.map((s) => s.productName);
@@ -91,6 +103,24 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect }) => {
           }}
         />
         <Autocomplete
+          multiple
+          sx={{ width: 300, height: 70 }}
+          options={getMonth()}
+          onSelect={(e, values) => handleMonthSelect(e.target.value, values)}
+          onChange={(e, values) => handleMonthSelect(e.target.value, values)}
+          renderInput={(params) => {
+            return <TextField {...params} key={params.id} label="Month" />;
+          }}
+          renderOption={(props, sale) => {
+            return (
+              <li {...props} key={sale}>
+                {sale}
+              </li>
+            );
+          }}
+        />
+
+<Autocomplete
           multiple
           sx={{ width: 300, height: 70 }}
           options={getMonth()}
