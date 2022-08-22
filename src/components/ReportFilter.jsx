@@ -123,11 +123,11 @@ const ReportFilter = ({ sales, setDisplaySales, handleMonthSelect,  }) => {
 <Autocomplete
           multiple
           sx={{ width: 300, height: 70 }}
-          options={getMonth()}
-          onSelect={(e, values) => handleMonthSelect(e.target.value, values)}
-          onChange={(e, values) => handleMonthSelect(e.target.value, values)}
+          options={getYear()} // need an array of years
+          onSelect={(e, values) => handleYearSelect(e.target.value, values)}
+          onChange={(e, values) => handleYearSelect(e.target.value, values)}
           renderInput={(params) => {
-            return <TextField {...params} key={params.id} label="Month" />;
+            return <TextField {...params} key={params.id} label="Year" />;
           }}
           renderOption={(props, sale) => {
             return (
